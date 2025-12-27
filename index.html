@@ -14,6 +14,7 @@
     <button class="=" onclick="buttonEqualTo()">=</button>
     <script>
       let calculation = '';
+      let count = 0;
       document.querySelector('input')
         .addEventListener('keydown',(event)=>{
           if(event.key== "Enter"){
@@ -43,6 +44,7 @@
       function buttonEqualTo(){
        
         calculation = document.querySelector('input').value;  
+        
         let operator;
         let match = calculation.match(/[+\-*/]/);
         
@@ -99,6 +101,7 @@
     </script>
   </body>
 </html>
+
 
 
 
