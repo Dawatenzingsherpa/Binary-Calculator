@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binary Calculator</title>
+  </head>
+  <body>
+    <input>
+    <button class="js-1" onclick="buttonClick(1)">1</button>
+    <button class="js-0" onclick="buttonClick(0)">0</button>
+    <button class="+" onclick="buttonClick('+')">+</button>
+    <button class="-" onclick="buttonClick('-')">-</button>
+    <button class="*" onclick="buttonClick('*')">*</button>
+    <button class="/" onclick="buttonClick('/')">/</button>
+    <button class="=" onclick="buttonEqualTo()">=</button>
+    <script>
+      let calculation = '';
+      document.querySelector('input')
+        .addEventListener('keydown',(event)=>{
+          if(event.key== "Enter"){
+            buttonEqualTo();
+          }
+        })      
+      
+
+
+      function buttonClick(par){
+        calculation += par;
+        document.querySelector('input').value = calculation;
+      }
+
+      function buttonEqualTo(){
+       
+        calculation = document.querySelector('input').value;  
+        let operator;
+        let match = calculation.match(/[+\-*/]/);
+        
+        if(match){
+          operator = (match[0]);
+          console.log(operator);
+        }
+        const [num1,num2] = calculation.split(`${operator}`);
+        num = binaryToDecimal(num1);
+        numb = binaryToDecimal(num2);
+        
+        calculation = `${num} ${operator} ${numb}`
+        calculation = eval(calculation);
+        calculation = decimalToBinary(calculation);
+        document.querySelector('input').value = calculation;
+        
+        
+      }
+
+      function binaryToDecimal(num){
+        let digits = String(num).split("");
+        
+        let conversion = 0;
+        for(let i = 0;i < digits.length;i++){
+          let digit = Number(digits[digits.length-i-1]);
+          if(digit < 2){
+          conversion = conversion + (digit * (2 ** i));
+          
+
+          }else{
+            alert('Invalid Input');
+            break;
+          }
+
+        }
+        
+        return conversion;
+      }
+
+
+      function decimalToBinary(num){
+        let conversion = '';
+        while (num > 0){
+          let rem = num % 2;
+          conversion = conversion + String(rem);
+          num = Math.floor(num / 2);
+          
+          
+        }
+        conversion = String(conversion).split('').reverse().join('');
+        return conversion;
+      }
+
+    </script>
+  </body>
+</html>
