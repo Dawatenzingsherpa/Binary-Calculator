@@ -17,6 +17,7 @@
       let count = 0;
       document.addEventListener('keydown',(event)=>{
           if(event.key== "Enter"){
+            console.log(event.key);
             buttonEqualTo();
           }
         })      
@@ -28,7 +29,7 @@
               calculation += par;
               document.querySelector('input').value = calculation;
          }else{
-             if(par == '1' || par == '0'){
+             if(par == 1 || par == 0){
                 calculation = "";
                 calculation += par;
                 document.querySelector('input').value = calculation;
@@ -44,6 +45,7 @@
       function buttonEqualTo(){
        
         calculation = document.querySelector('input').value;  
+        console.log(calculation);
         
         let operator;
         let match = calculation.match(/[+\-*/]/);
@@ -58,7 +60,9 @@
         
         calculation = `${num} ${operator} ${numb}`
         calculation = eval(calculation);
+        console.log(calculation);
         calculation = decimalToBinary(calculation);
+        console.log(calculation);
         document.querySelector('input').value = calculation;
         
         
@@ -101,6 +105,7 @@
     </script>
   </body>
 </html>
+
 
 
 
