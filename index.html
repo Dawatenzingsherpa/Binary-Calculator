@@ -24,9 +24,16 @@
 
 
       function buttonClick(par){
-        calculation += par;
-        document.querySelector('input').value = calculation;
-      }
+         if(count == 0){
+              calculation += par;
+              document.querySelector('input').value = calculation;
+         }else{
+              calculation = "";
+              calculation += par;
+              document.querySelector('input').value = calculation;
+              count = 0;
+         }
+        }
 
       function buttonEqualTo(){
        
@@ -87,3 +94,4 @@
     </script>
   </body>
 </html>
+
